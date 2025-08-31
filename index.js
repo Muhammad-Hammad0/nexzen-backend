@@ -21,12 +21,17 @@ app.use(cookieParser());
 
 app.use(cors({
   origin: ["http://localhost:5173","http://localhost:5174"],
-  credentials: true, // allow cookies
+  credentials: true,
 }));
+
+// 👇 Root route add kiya
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
-app.use("/api/product",productRoutes)
+app.use("/api/product", productRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/order", orderRoutes);
 
@@ -34,7 +39,7 @@ const start = async () => {
   try {
     await connectDb();
     app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
+      console.log(`Server running on port ${PORT}`);
     });
   } catch (err) {
     console.error("Failed to start server", err);
