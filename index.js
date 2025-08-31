@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: ["http://localhost:5173","http://localhost:5174"],
+  origin: ["https://nexzenow.com","http://localhost:5174"],
   credentials: true,
 }));
 
